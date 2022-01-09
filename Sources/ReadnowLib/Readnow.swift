@@ -63,11 +63,13 @@ public final class Readnow {
 			throw "\(randomElement.URLString ?? "---") is not a valid URL"
 		}
 
-		if !arguments.contains("--no-print") {
+		if arguments.contains("--no-print") {
+			NSWorkspace.shared.open(url)
+		} else if arguments.contains("--print-only") {
 			print(url)
-		} else if !arguments.contains("--print-only") {
+		} else {
+			print(url)
 			NSWorkspace.shared.open(url)
 		}
 	}
 }
-
